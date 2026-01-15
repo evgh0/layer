@@ -213,11 +213,13 @@ const CanvasCard = forwardRef<HTMLCanvasElement, CanvasCardProps>(({
       onPress={onPress}
       className={isFullScreen ? "w-full h-full border-none shadow-none bg-transparent" : "h-[250px]"}
     >
-      <CardBody ref={containerRef} className="overflow-hidden p-0 flex-grow flex justify-center items-center">
-        <canvas 
-          ref={internalCanvasRef} 
-          className="w-full h-full block"
-        />
+      <CardBody className="overflow-hidden p-0 flex-grow flex justify-center items-center">
+        <div ref={containerRef} className="w-full h-full">
+          <canvas 
+            ref={internalCanvasRef} 
+            className="w-full h-full block"
+          />
+        </div>
       </CardBody>
     </Card>
   );
