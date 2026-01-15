@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 
@@ -36,7 +36,13 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="de">
-      <head />
+      <head>
+        <link
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+          rel="stylesheet"
+          type="text/css"
+        />
+      </head>
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",

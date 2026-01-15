@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
+  name: "layer",
   description: "Erstellen Sie wunderschöne Websites, unabhängig von Ihrer Designerfahrung.",
   navItems: [
     {
