@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "layer",
-  description: "Erstellen Sie wunderschöne Websites, unabhängig von Ihrer Designerfahrung.",
+  description: "Visualisierung und Erzeugung von komplexen verschachtelten Mustern und geometrischen Strukturen.",
   navItems: [
     {
       label: "Startseite",
