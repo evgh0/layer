@@ -40,24 +40,6 @@ function drawStructure(
   if (n === 1) {
     childR = r * 0.9; // Increased from 0.55 to take up almost everything
 
-    // Draw connection for single child
-    ctx.beginPath();
-    const originalLineWidth = ctx.lineWidth;
-    ctx.lineWidth = Math.max(0.5, originalLineWidth * 0.5);
-
-    // Connect top of parent rim to top of child rim
-    const angle = -Math.PI / 2;
-    const parentRimX = x + Math.cos(angle) * r;
-    const parentRimY = y + Math.sin(angle) * r;
-    const childRimX = x + Math.cos(angle) * childR;
-    const childRimY = y + Math.sin(angle) * childR;
-
-    ctx.moveTo(parentRimX, parentRimY);
-    ctx.lineTo(childRimX, childRimY);
-    ctx.stroke();
-
-    ctx.lineWidth = originalLineWidth;
-    
     drawStructure(ctx, structure[0], x, y, childR, depth + 1);
   } else {
     // Optimized packing for n > 1
@@ -83,57 +65,6 @@ function drawStructure(
       childrenCoords.push({ x: childX, y: childY, angle });
     }
 
-    // Draw connections
-    ctx.beginPath();
-    // Save original line width
-    const originalLineWidth = ctx.lineWidth;
-    // Make connection lines thinner
-    ctx.lineWidth = Math.max(0.5, originalLineWidth * 0.5);
-
-    // 1. Connect Parent Rim to Child Outer Rim
-    for (const child of childrenCoords) {
-      // Point on the parent rim
-      const parentRimX = x + Math.cos(child.angle) * r;
-      const parentRimY = y + Math.sin(child.angle) * r;
-      
-      // Point on the child outer rim (towards parent)
-      const childRimX = child.x + Math.cos(child.angle) * childR;
-      const childRimY = child.y + Math.sin(child.angle) * childR;
-
-      ctx.moveTo(parentRimX, parentRimY);
-      ctx.lineTo(childRimX, childRimY);
-    }
-
-    // 2. Connect Children to each other (Ring)
-    for (let i = 0; i < n; i++) {
-      const curr = childrenCoords[i];
-      const next = childrenCoords[(i + 1) % n];
-
-      // Calculate vector from curr to next
-      const dx = next.x - curr.x;
-      const dy = next.y - curr.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist > 0) {
-        // Calculate unit vector
-        const ux = dx / dist;
-        const uy = dy / dist;
-
-        // Points on the rims
-        const startX = curr.x + ux * childR;
-        const startY = curr.y + uy * childR;
-        const endX = next.x - ux * childR;
-        const endY = next.y - uy * childR;
-
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-      }
-    }
-    ctx.stroke();
-
-    // Restore line width
-    ctx.lineWidth = originalLineWidth;
-    
     for (let i = 0; i < n; i++) {
       drawStructure(ctx, structure[i], childrenCoords[i].x, childrenCoords[i].y, childR, depth + 1);
     }
