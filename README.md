@@ -1,32 +1,30 @@
-# Next.js & HeroUI Template
+# MUSTER - Pattern Visualization
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+MUSTER is a web application designed for the visualization and generation of complex nested patterns and recursive geometric structures. Users can explore different "Verschachtelungslagen" (nesting levels) and export the resulting designs as high-quality images.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## Features
+
+- **Recursive Pattern Generation**: Generate complex geometric structures based on mathematical nesting levels.
+- **Dynamic Level Selection**: Adjust the nesting depth via an interactive sidebar (optimized for both desktop and mobile).
+- **Interactive Gallery**: Browse through unique generated patterns.
+- **Full-Screen View**: Inspect patterns in detail with a dedicated inspection mode.
+- **Image Export**: Export patterns as PNG files directly from the browser.
+- **Responsive Design**: Fully functional on mobile and desktop devices.
+- **Dark Mode Support**: Seamlessly switch between light and dark themes.
 
 ## Technologies Used
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
+- [Next.js 15](https://nextjs.org/docs/getting-started)
 - [HeroUI v2](https://heroui.com/)
+- [HTML5 Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) for high-performance pattern rendering.
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
+- [framer-motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
-## How to Use
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+## Getting Started
 
 ### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
 ```bash
 npm install
@@ -38,27 +36,10 @@ npm install
 npm run dev
 ```
 
-## Deployment
+## How it Works
 
-To deploy this site to GitHub Pages:
-
-1. Push your code to a GitHub repository.
-2. In your repository settings, go to **Settings** > **Pages**.
-3. Under **Build and deployment** > **Source**, select **GitHub Actions**.
-4. The site will automatically build and deploy whenever you push to the `main` branch.
-
-**Note:** If you are deploying to a project page (e.g., `https://<username>.github.io/<repo-name>/`), the `basePath` is automatically handled by the GitHub Action. If you are using a custom domain or a user page (`https://<username>.github.io/`), no additional configuration is needed.
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+The patterns are generated using recursive algorithms found in `utils/nested-lists.ts`. The `CanvasCard` component handles the rendering of these structures onto an HTML5 Canvas, ensuring smooth performance even at high nesting levels.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+Licensed under the [MIT license](LICENSE).
